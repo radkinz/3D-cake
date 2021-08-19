@@ -1,3 +1,8 @@
+let cake_lining_texture;
+function preload() {
+  cake_lining_texture = loadImage('images/candycane.jpg');
+}
+
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
 }
@@ -75,6 +80,7 @@ function draw() {
   noStroke();
   translate(0, -135, 135);
   rotateY(frameCount * 0.01);
+  specularMaterial(255, 153, 10);
   ellipsoid(8, 12, 8);
   pop();
 
@@ -82,6 +88,7 @@ function draw() {
   noStroke();
   translate(80, -135, 105);
   rotateY(frameCount * 0.01);
+  specularMaterial(255, 153, 10);
   ellipsoid(8, 12, 8);
   pop();
 
@@ -89,6 +96,7 @@ function draw() {
   noStroke();
   translate(-80, -135, 105);
   rotateY(frameCount * 0.01);
+  specularMaterial(255, 153, 10);
   ellipsoid(8, 12, 8);
   pop();
   
@@ -96,6 +104,7 @@ function draw() {
   noStroke();
   translate(120, -135, 10);
   rotateY(frameCount * 0.01);
+  specularMaterial(255, 153, 10);
   ellipsoid(8, 12, 8);
   pop();
   
@@ -103,6 +112,7 @@ function draw() {
   noStroke();
   translate(-120, -135, 10);
   rotateY(frameCount * 0.01);
+  specularMaterial(255, 153, 10);
   ellipsoid(8, 12, 8);
   pop();
 
@@ -111,6 +121,7 @@ function draw() {
   noStroke();
   translate(0, 45);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(160, 7);
   pop();
 
@@ -118,6 +129,7 @@ function draw() {
   noStroke();
   translate(0, -45);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(160, 7);
   pop();
 
@@ -125,6 +137,7 @@ function draw() {
   noStroke();
   translate(0, -145);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(99, 5);
   pop();
 
@@ -132,6 +145,7 @@ function draw() {
   noStroke();
   translate(0, -55);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(100, 7);
   pop();
   
@@ -139,6 +153,7 @@ function draw() {
   noStroke();
   translate(0, -155);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(50, 5);
   pop();
 
@@ -146,6 +161,7 @@ function draw() {
   noStroke();
   translate(0, -215);
   rotateX(1.57);
+  texture(cake_lining_texture);
   torus(50, 5);
   pop();
 }
