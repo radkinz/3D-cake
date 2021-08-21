@@ -19,6 +19,7 @@ function draw() {
   
   //lights on top
   directionalLight(250, 250, 250, 0.07, 0.9, -1);
+  rotateX(mouseX * 0.01)
   
   //cake base layer
   push();
@@ -92,79 +93,32 @@ function draw() {
   
   //cake candles
   push();
+  translate(0, -80, 0);
   noStroke();
-  translate(0, -80, 135);
-  rotateY(frameCount * 0.01);
-  cylinder(10, 80);
-  pop();
-  
-  push();
-  noStroke();
-  translate(80, -80, 105);
-  rotateY(frameCount * 0.01);
-  cylinder(10, 80);
-  pop();
-    
-  push();
-  noStroke();
-  translate(-80, -80, 105);
-  rotateY(frameCount * 0.01);
-  cylinder(10, 80);
-  pop();
-  
-  push();
-  noStroke();
-  translate(120, -80, 10);
-  rotateY(frameCount * 0.01);
-  cylinder(10, 80);
-  pop();
-  
-  push();
-  noStroke();
-  translate(-120, -80, 10);
-  rotateY(frameCount * 0.01);
-  cylinder(10, 80);
-  pop();
+  for (let t = 0; t < 10; t++) {
+    //stem
+    push();
+		let angle = t * 36;
+		let x1 = sin(radians(angle)) * 140; // Get the inner coords of the point on the circle using trig
+		let z1 = cos(radians(angle)) * 140;
+    translate(x1, 0, z1);
+    cylinder(10, 80);
+    pop();
 
-  //cake flames
-  push();
-  noStroke();
-  translate(0, -135, 135);
-  rotateY(frameCount * 0.01);
-  specularMaterial(255, 153, 10);
-  ellipsoid(8, 12, 8);
-  pop();
+    //wick
+    push();
+    translate(x1, -40, z1);
+    ambientMaterial(0);
+    cylinder(1, 25);
+    pop();
 
-  push();
-  noStroke();
-  translate(80, -135, 105);
-  rotateY(frameCount * 0.01);
-  specularMaterial(255, 153, 10);
-  ellipsoid(8, 12, 8);
-  pop();
-
-  push();
-  noStroke();
-  translate(-80, -135, 105);
-  rotateY(frameCount * 0.01);
-  specularMaterial(255, 153, 10);
-  ellipsoid(8, 12, 8);
-  pop();
-  
-  push();
-  noStroke();
-  translate(120, -135, 10);
-  rotateY(frameCount * 0.01);
-  specularMaterial(255, 153, 10);
-  ellipsoid(8, 12, 8);
-  pop();
-  
-  push();
-  noStroke();
-  translate(-120, -135, 10);
-  rotateY(frameCount * 0.01);
-  specularMaterial(255, 153, 10);
-  ellipsoid(8, 12, 8);
+    //flame
+    push();
+    translate(x1, -60, z1);
+		specularMaterial(255, 153, 10);
+		ellipsoid(4,10);
+    pop();
+	}
   pop();
 
   //cake lining
