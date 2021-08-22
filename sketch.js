@@ -1,4 +1,4 @@
-let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture;
+let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture, flame_texture;
 
 function preload() {
   cake_lining_texture = loadImage('images/candycane.jpg');
@@ -102,10 +102,13 @@ function draw() {
 		let x1 = sin(radians(angle)) * 140; // Get the inner coords of the point on the circle using trig
 		let z1 = cos(radians(angle)) * 140;
     translate(x1, 0, z1);
+    colorMode(HSL);
+    ambientMaterial((t/10)*360, 100, 80);
     cylinder(10, 80);
     pop();
 
     //wick
+    colorMode(RGB);
     push();
     translate(x1, -40, z1);
     ambientMaterial(0);
@@ -115,8 +118,70 @@ function draw() {
     //flame
     push();
     translate(x1, -60, z1);
-		specularMaterial(255, 153, 10);
-		ellipsoid(4,10);
+		specularMaterial(random(240, 255), random(255), random(50));
+		ellipsoid(random(1.5, 4), random(9, 12));
+    pop();
+	}
+  pop();
+
+  push();
+  translate(0, -50, 0);
+  rotateY(radians(90)); //rotate to not disturb candles
+  noStroke();
+  for (let t = 0; t < 10; t++) {
+    //cream base
+    push();
+		let angle = t * 36;
+		let x1 = sin(radians(angle)) * 130; 
+		let z1 = cos(radians(angle)) * 130;
+    translate(x1, 0, z1);
+    rotateX(1.57);
+    torus(10, 10);
+    pop();
+
+    //cream middle
+    push();
+    translate(x1, -10, z1);
+    rotateX(1.57);
+    torus(6, 8);
+    pop();
+
+    //cream top
+    push();
+    translate(x1, -18, z1);
+    rotateX(1.57);
+    torus(3, 5);
+    pop();
+	}
+  pop();
+
+  //add little cream babies
+  push();
+  translate(0, -150, 0);
+  noStroke();
+  for (let t = 0; t < 4; t++) {
+    //cream base
+    push();
+		let angle = t * 90;
+		let x1 = sin(radians(angle)) * 75; 
+		let z1 = cos(radians(angle)) * 75;
+    translate(x1, 0, z1);
+    rotateX(1.57);
+    torus(10, 10);
+    pop();
+
+    //cream middle
+    push();
+    translate(x1, -10, z1);
+    rotateX(1.57);
+    torus(6, 8);
+    pop();
+
+    //cream top
+    push();
+    translate(x1, -18, z1);
+    rotateX(1.57);
+    torus(3, 5);
     pop();
 	}
   pop();
