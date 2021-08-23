@@ -1,4 +1,4 @@
-let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture, flame_texture;
+let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture, strawberryseed_texture;
 
 function preload() {
   cake_lining_texture = loadImage('images/candycane.jpg');
@@ -9,6 +9,17 @@ function preload() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+
+  //create strawberry topping texture
+  strawberryseed_texture = createGraphics(100,100);
+  strawberryseed_texture.background(255, 0, 0);
+  strawberryseed_texture.stroke(200,200,0);
+	for (let t = 1; t < 200; t++){
+    let x = random(100);
+		let y = random(100);
+    strawberryseed_texture.strokeWeight(random(1, 3));
+		strawberryseed_texture.point(x,y);
+	}
 }
 
 function draw() {
@@ -124,6 +135,7 @@ function draw() {
 	}
   pop();
 
+  //add little cream babies
   push();
   translate(0, -50, 0);
   rotateY(radians(90)); //rotate to not disturb candles
@@ -155,33 +167,50 @@ function draw() {
 	}
   pop();
 
-  //add little cream babies
+  //add strawberries
   push();
   translate(0, -150, 0);
   noStroke();
   for (let t = 0; t < 4; t++) {
-    //cream base
+    //berry
     push();
 		let angle = t * 90;
 		let x1 = sin(radians(angle)) * 75; 
 		let z1 = cos(radians(angle)) * 75;
     translate(x1, 0, z1);
-    rotateX(1.57);
-    torus(10, 10);
+    texture(strawberryseed_texture);
+    ellipsoid(17,20);
+    pop();
+	}
+  pop();
+
+  //add oreos
+  push();
+  translate(0, -150, 0);
+  rotateY(radians(45)); //rotate to not disturb strawberries
+  noStroke();
+  for (let t = 0; t < 4; t++) {
+    //oreo cookie
+    push();
+		let angle = t * 90;
+		let x1 = sin(radians(angle)) * 75; 
+		let z1 = cos(radians(angle)) * 75;
+    translate(x1, 0, z1);
+    ambientMaterial(80,60,30);
+    cylinder(20,5);
     pop();
 
-    //cream middle
     push();
     translate(x1, -10, z1);
-    rotateX(1.57);
-    torus(6, 8);
+    ambientMaterial(80,60,30);
+    cylinder(20,5);
     pop();
 
-    //cream top
+    //icing
     push();
-    translate(x1, -18, z1);
+    translate(x1, -5, z1);
     rotateX(1.57);
-    torus(3, 5);
+    torus(15, 4);
     pop();
 	}
   pop();
