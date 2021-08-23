@@ -1,10 +1,12 @@
 let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture, strawberryseed_texture;
+let duck;
 
 function preload() {
   cake_lining_texture = loadImage('images/candycane.jpg');
   chocolate_texture = loadImage('images/chocolatecake.png');
   strawberry_texture = loadImage('images/strawberry_texture.jpg');
   vanilla_texture = loadImage('images/vanilla_texture.jpg');
+  duck = loadModel('/models/duck.obj');
 }
 
 function setup() {
@@ -262,5 +264,14 @@ function draw() {
   rotateX(1.57);
   texture(cake_lining_texture);
   torus(50, 5);
+  pop();
+
+  //obj toppings
+  push();
+  translate(0, -220);
+  rotateX(radians(180));
+  noStroke();
+  specularMaterial(255, 246, 161);
+  model(duck);
   pop();
 }
