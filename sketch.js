@@ -274,4 +274,18 @@ function draw() {
   specularMaterial(255, 246, 161);
   model(duck);
   pop();
+
+  push();
+  translate(130, -125);
+  rotateZ(radians(45));
+  noStroke();
+  cylinder(6, 200);
+  pop();
+
+  push();
+  translate(-130, -125);
+  rotateZ(radians(-45));
+  noStroke();
+  cylinder(6, 200);
+  pop();
 }
