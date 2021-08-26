@@ -1,5 +1,5 @@
 let cake_lining_texture, chocolate_texture, strawberry_texture, vanilla_texture, strawberryseed_texture;
-let duck;
+let duck, heart, star;
 
 function preload() {
   cake_lining_texture = loadImage('images/candycane.jpg');
@@ -7,6 +7,8 @@ function preload() {
   strawberry_texture = loadImage('images/strawberry_texture.jpg');
   vanilla_texture = loadImage('images/vanilla_texture.jpg');
   duck = loadModel('/models/duck.obj');
+  heart = loadModel('/models/heart.obj');
+  star = loadModel('/models/star.obj');
 }
 
 function setup() {
@@ -275,6 +277,7 @@ function draw() {
   model(duck);
   pop();
 
+  //arms for heart and star sticks
   push();
   translate(130, -125);
   rotateZ(radians(45));
@@ -287,5 +290,55 @@ function draw() {
   rotateZ(radians(-45));
   noStroke();
   cylinder(6, 200);
+  pop();
+
+  //heart model
+  push();
+  translate(-170, -165);
+  rotateX(radians(90));
+  rotateY(radians(-45));
+  noStroke();
+  specularMaterial(255, 0, 0);
+  model(heart);
+  pop();
+
+  push();
+  translate(170, -165);
+  rotateX(radians(90));
+  rotateY(radians(45));
+  noStroke();
+  specularMaterial(255, 0, 0);
+  model(heart);
+  pop();
+
+  //add star topping arms + star
+  push();
+  translate(80, -225);
+  rotateZ(radians(45));
+  noStroke();
+  cylinder(3, 120);
+  pop();
+
+  push();
+  translate(-80, -225);
+  rotateZ(radians(-45));
+  noStroke();
+  cylinder(3, 120);
+  pop();
+
+  push();
+  translate(-120, -290);
+  rotateX(radians(-90));
+  noStroke();
+  specularMaterial(0, 0, 255);
+  model(star);
+  pop();
+
+  push();
+  translate(120, -290);
+  rotateX(radians(-90));
+  noStroke();
+  specularMaterial(0, 0, 255);
+  model(star);
   pop();
 }
